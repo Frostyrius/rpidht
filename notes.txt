@@ -1,0 +1,11 @@
+some notes
+---------
+
+main executable: dhtquery
+
+temps.db structure: date DATE, temp FLOAT, hum FLOAT
+temps.db tables: temps (old), tempsIn, tempsOut
+
+pinout numbers (GPIO numbers)
+DHT pin in: 17
+DHT pin out: 27
