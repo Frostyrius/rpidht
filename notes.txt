@@ -1,7 +1,8 @@
 some notes
----------
+----------
 
 main executable: dhtquery
+usage: ./dhtquery [DHT type(11, 22)] [GPIO pin] [table name]
 
 temps.db structure: date DATE, temp FLOAT, hum FLOAT
 temps.db tables: temps (old), tempsIn, tempsOut

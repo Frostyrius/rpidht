@@ -25,11 +25,14 @@ int main(int argc, char **argv)
 {
     DHTData temp_data;
 
-    if (argc != 3) {
-	printf("usage: %s [11|22|2302] GPIOpin#\n", argv[0]);
-	printf("example: %s 2302 4 - Read from an AM2302 connected to GPIO #4\n", argv[0]);
-	return 2;
-    }
+// DHT model check
+
+//    if (argc != 3) {
+//	printf("usage: %s [11|22|2302] GPIOpin#\n", argv[0]);
+//	printf("example: %s 2302 4 - Read from an AM2302 connected to GPIO #4\n", argv[0]);
+//	return 2;
+//    }
+
     int type = 0;
     if (strcmp(argv[1], "11") == 0) type = DHT11;
     if (strcmp(argv[1], "22") == 0) type = DHT22;
@@ -55,7 +58,7 @@ int main(int argc, char **argv)
     sched_setscheduler( 0, SCHED_RR, &param );
     
     if( readDHT(type, dhtpin, &temp_data, MAX_RETRIES) > 0 ) {
-	printf("INSERT INTO temps VALUES (datetime(\"now\"), %.1f, %.1f);\n" , temp_data.degrees_c, temp_data.humidity);
+	printf("INSERT INTO %s VALUES (datetime(\"now\", \"localtime\"), %.1f, %.1f);\n" , argv[3], temp_data.degrees_c, temp_data.humidity);
     } else {
 	printf( "Could not retrieve temperatures\n" );
     }
